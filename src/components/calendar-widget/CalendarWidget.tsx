@@ -35,7 +35,7 @@ export default function CalendarWidget() {
         // Toggle the expanded state when clicked
         onClick={() => setExpanded((expanded) => !expanded)}
         layout
-        className="flex flex-col relative overflow-hidden justify-center w-fit border rounded-lg"
+        className="relative flex w-fit flex-col justify-center overflow-hidden rounded-lg border"
       >
         <motion.div
           layout="position"
@@ -43,7 +43,7 @@ export default function CalendarWidget() {
           animate={{ width: expanded ? 420 : "fit-content" }}
           className="relative max-w-64 md:max-w-none"
         >
-          <div className="flex justify-between relative p-4">
+          <div className="relative flex justify-between p-4">
             <motion.div layout="position">
               <Badge className="bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200">
                 In 15 mins
@@ -72,17 +72,17 @@ export default function CalendarWidget() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="border-t w-full relative z-10 space-y-2 py-4"
+                className="relative z-10 w-full space-y-2 border-t py-4"
               >
                 <div className="px-4">
                   <p>Guests</p>
                 </div>
 
                 {/* Render a list of avatars */}
-                <div className="flex px-4 -space-x-2">
+                <div className="flex -space-x-2 px-4">
                   {[...Array(3)].map((_, i) => (
                     <Avatar key={i} className={cn("relative", `z-[${i + 1}]`)}>
-                      <AvatarFallback className="border-2 shadow-xl rounded-full border-white">
+                      <AvatarFallback className="rounded-full border-2 border-black shadow-xl dark:border-white">
                         CN
                       </AvatarFallback>
                     </Avatar>

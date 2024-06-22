@@ -12,7 +12,7 @@ export default function Nav() {
   const [activeTab, setActiveTab] = useState("");
   return (
     <nav
-      className="flex items-center justify-center gap-4 p-2 md:p-4 border-b"
+      className="flex items-center justify-center gap-4 border-b p-2 md:p-4"
       onMouseLeave={() => setActiveTab("")}
     >
       {links.map((link) => (
@@ -21,7 +21,7 @@ export default function Nav() {
           href={link.href}
           onMouseEnter={() => setActiveTab(link.href)}
           onMouseLeave={() => setActiveTab(link.href)}
-          className="relative p-2 rounded"
+          className="relative rounded p-2"
         >
           <span>{link.label}</span>
           <AnimatePresence>
@@ -33,7 +33,7 @@ export default function Nav() {
                 exit={{ opacity: 0 }}
                 transition={{ type: "spring", duration: 0.4, bounce: 0 }}
                 layoutId="navHover"
-                className="absolute inset-0 rounded-lg size-full bg-black/15 dark:bg-white/15"
+                className="absolute inset-0 size-full rounded-lg bg-black/15 dark:bg-white/15"
               />
             ) : null}
           </AnimatePresence>

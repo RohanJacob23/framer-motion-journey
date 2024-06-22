@@ -7,10 +7,10 @@ import CalendarWidget from "@/components/calendar-widget/CalendarWidget";
  */
 export default function page() {
   return (
-    <main className="flex flex-col px-4 md:px-8 py-8">
-      <h2 className="text-center border-none underline">Calendar Widget</h2>
+    <main className="flex flex-col px-4 py-8 md:px-8">
+      <h2 className="border-none text-center underline">Calendar Widget</h2>
 
-      <section className="flex flex-col items-center h-[50vh] mt-4 relative">
+      <section className="relative mt-4 flex h-[50vh] flex-col items-center">
         <CalendarWidget />
       </section>
     </main>

@@ -89,15 +89,15 @@
     @apply my-6 ml-6 list-disc [&>li]:mt-2;
   }
   .lead {
-    @apply text-xl text-muted-foreground;
+    @apply text-muted-foreground text-xl;
   }
   .muted {
-    @apply text-sm text-muted-foreground;
+    @apply text-muted-foreground text-sm;
   }
   html {
     -webkit-tap-highlight-color: transparent !important;
   }
   body {
-    @apply relative bg-background text-foreground;
+    @apply bg-background text-foreground relative;
   }
 }
