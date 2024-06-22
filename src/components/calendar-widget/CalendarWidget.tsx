@@ -45,7 +45,9 @@ export default function CalendarWidget() {
         >
           <div className="flex justify-between relative p-4">
             <motion.div layout="position">
-              <Badge className="bg-green-900 text-green-200">In 15 mins</Badge>
+              <Badge className="bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200">
+                In 15 mins
+              </Badge>
               <p className="font-semibold">Design Sync</p>
               <p className="text-muted-foreground">2:30pm</p>
             </motion.div>
