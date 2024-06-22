@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import Nav from "@/components/Nav";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 const fontSans = Poppins({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Nav />
           {children}
+          <ThemeSwitch />
         </ThemeProvider>
       </body>
     </html>

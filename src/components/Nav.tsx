@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 
 export default function Nav() {
   const links = [
@@ -12,7 +10,6 @@ export default function Nav() {
     { label: "Calendar Widget", href: "/calendar-widget" },
   ];
   const [activeTab, setActiveTab] = useState("");
-  const { theme, setTheme } = useTheme();
   return (
     <nav
       className="flex items-center justify-center gap-4 p-2 md:p-4 border-b"
@@ -42,10 +39,6 @@ export default function Nav() {
           </AnimatePresence>
         </Link>
       ))}
-      <Button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-        <span className="dark:hidden">Light</span>
-        <span className="hidden dark:inline">Dark</span>
-      </Button>
     </nav>
   );
 }
