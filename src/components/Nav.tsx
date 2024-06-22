@@ -8,6 +8,7 @@ export default function Nav() {
   const links = [
     { label: "Home", href: "/" },
     { label: "Calendar Widget", href: "/calendar-widget" },
+    { label: "Elastic Card", href: "/elastic-card" },
   ];
   const [activeTab, setActiveTab] = useState("");
   return (

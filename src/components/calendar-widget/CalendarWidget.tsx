@@ -30,7 +30,7 @@ export default function CalendarWidget() {
 
   return (
     // Configure the motion for the entire component
-    <MotionConfig transition={{ type: "spring", duration: 0.5, bounce: 0 }}>
+    <MotionConfig transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}>
       <motion.div
         // Toggle the expanded state when clicked
         onClick={() => setExpanded((expanded) => !expanded)}
@@ -48,7 +48,7 @@ export default function CalendarWidget() {
               <Badge className="bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200">
                 In 15 mins
               </Badge>
-              <p className="font-semibold">Design Sync</p>
+              <p className="text-nowrap font-semibold">Design Sync</p>
               <p className="text-muted-foreground">2:30pm</p>
             </motion.div>
 
