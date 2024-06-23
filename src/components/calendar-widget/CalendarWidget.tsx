@@ -35,15 +35,15 @@ export default function CalendarWidget() {
         // Toggle the expanded state when clicked
         onClick={() => setExpanded((expanded) => !expanded)}
         layout
-        className="relative flex w-fit flex-col justify-center overflow-hidden rounded-lg border"
+        className="flex w-fit flex-col justify-center overflow-hidden rounded-lg border"
       >
         <motion.div
           layout="position"
           // Animate the width of the card based on the expanded state
           animate={{ width: expanded ? 420 : "fit-content" }}
-          className="relative max-w-64 md:max-w-none"
+          className="max-w-64 md:max-w-none"
         >
-          <div className="relative flex justify-between p-4">
+          <div className="flex justify-between p-4">
             <motion.div layout="position">
               <Badge className="bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200">
                 In 15 mins
@@ -58,7 +58,6 @@ export default function CalendarWidget() {
               variants={cameraVariants}
               // Toggle the visibility of the camera icon based on the expanded state
               animate={expanded ? "visible" : "hidden"}
-              className="relative z-10"
             >
               <CameraIcon className="size-6" />
             </motion.div>
@@ -72,7 +71,7 @@ export default function CalendarWidget() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="relative z-10 w-full space-y-2 border-t py-4"
+                className="w-full space-y-2 border-t py-4"
               >
                 <div className="px-4">
                   <p>Guests</p>
@@ -81,7 +80,7 @@ export default function CalendarWidget() {
                 {/* Render a list of avatars */}
                 <div className="flex -space-x-2 px-4">
                   {[...Array(3)].map((_, i) => (
-                    <Avatar key={i} className={cn("relative", `z-[${i + 1}]`)}>
+                    <Avatar key={i} className={cn("", `z-[${i + 1}]`)}>
                       <AvatarFallback className="rounded-full border-2 border-black shadow-xl dark:border-white">
                         CN
                       </AvatarFallback>

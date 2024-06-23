@@ -20,7 +20,9 @@ export default function ElasticCard() {
             onMouseLeave={() => setIsHovering(false)}
           >
             <div className="absolute inset-0 z-20 h-fit p-4 text-white dark:text-popover-foreground">
-              <h1>Elastic Card</h1>
+              <h1 className="text-center text-4xl underline">
+                Welcome to the future
+              </h1>
             </div>
             <div
               style={{ borderRadius: 12 }}
