@@ -17,16 +17,16 @@ export default function ActionToolbar() {
       >
         {/* commit badge */}
         <motion.div
-          className="flex overflow-hidden rounded-lg bg-zinc-100 shadow dark:bg-zinc-900"
+          className="flex max-w-full cursor-pointer overflow-hidden rounded-lg bg-zinc-100 shadow dark:bg-zinc-900"
           animate={{ width: bounds.width }}
           onClick={() => setShowError((prev) => !prev)}
         >
           <div
             ref={elementRef}
-            className="flex items-center gap-4 rounded-lg p-2 py-1"
+            className="flex items-center gap-2 rounded-lg p-2 py-1 md:gap-4"
           >
-            <CommitIcon className="text-warning size-6" />
-            <p>ActionToolbar</p>
+            <CommitIcon className="size-4 text-warning md:size-6" />
+            <p className="text-xs md:text-base">2e860de</p>
 
             <AnimatePresence mode="popLayout">
               {showError && (
@@ -38,7 +38,7 @@ export default function ActionToolbar() {
                   className="flex items-center gap-2 overflow-hidden text-nowrap"
                 >
                   <div>·</div>
-                  <p>Failed to commit</p>
+                  <p className="text-xs md:text-base">Failed to commit</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -46,7 +46,7 @@ export default function ActionToolbar() {
             <AnimatePresence mode="popLayout">
               {!showError ? (
                 <motion.div layoutId="badge" layout="position">
-                  <Badge className="bg-warning-400 text-warning-950 dark:bg-warning-950 dark:text-warning-500 hover:bg-warning-400/90 dark:hover:bg-warning-950/90 flex">
+                  <Badge className="flex bg-warning-400 text-warning-950 hover:bg-warning-400/90 dark:bg-warning-950 dark:text-warning-500 dark:hover:bg-warning-950/90">
                     Failed
                   </Badge>
                 </motion.div>
