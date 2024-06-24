@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useState } from "react";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { exit } from "process";
+import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export default function Nav() {
   const links = [
     { label: "Home", href: "/" },
     { label: "Calendar Widget", href: "/calendar-widget" },
     { label: "Elastic Card", href: "/elastic-card" },
+    { label: "Action Toolbar", href: "/action-toolbar" },
   ];
   const [showMenu, setShowMenu] = useState(false);
   return (
@@ -19,16 +19,40 @@ export default function Nav() {
         <div className="flex items-center justify-between gap-4 border-b p-2 md:p-4">
           <h1 className="text-xl">Animation Library</h1>
 
-          <div onClick={() => setShowMenu((prev) => !prev)}>
-            <HamburgerMenuIcon className="size-6" />
-          </div>
+          <button
+            onClick={() => setShowMenu((prev) => !prev)}
+            aria-expanded={showMenu}
+          >
+            <AnimatePresence initial={false} mode="popLayout">
+              {!showMenu ? (
+                <motion.div
+                  initial={{ rotate: 90, scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  exit={{ rotate: 90, scale: 0 }}
+                >
+                  <HamburgerMenuIcon className="size-6" />
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+            <AnimatePresence mode="popLayout">
+              {showMenu ? (
+                <motion.div
+                  initial={{ rotate: -90, scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  exit={{ rotate: -90, scale: 0 }}
+                >
+                  <Cross1Icon className="size-6" />
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </button>
         </div>
 
         {/* menu */}
-        <div className="relative">
+        <nav className="relative">
           <motion.div
             animate={{ height: showMenu ? "50vh" : 0 }}
-            className="absolute top-0 z-50 w-full overflow-hidden bg-background text-end"
+            className="absolute top-0 z-50 w-full overflow-hidden bg-zinc-100 text-end dark:bg-zinc-900"
           >
             <AnimatePresence mode="popLayout">
               {showMenu && (
@@ -61,7 +85,7 @@ export default function Nav() {
                         exit: { opacity: 0 },
                       }}
                       key={i}
-                      className="block text-2xl md:text-4xl"
+                      className="block text-2xl font-medium md:text-4xl"
                     >
                       <Link onClick={() => setShowMenu(false)} href={link.href}>
                         {link.label}
@@ -72,33 +96,8 @@ export default function Nav() {
               )}
             </AnimatePresence>
           </motion.div>
-        </div>
+        </nav>
       </nav>
     </MotionConfig>
   );
 }
-
-// {links.map((link) => (
-//   <Link
-//     key={link.href}
-//     href={link.href}
-//     onMouseEnter={() => setActiveTab(link.href)}
-//     onMouseLeave={() => setActiveTab(link.href)}
-//     className="relative rounded p-2"
-//   >
-//     <span>{link.label}</span>
-//     <AnimatePresence>
-//       {activeTab === link.href ? (
-//         <motion.div
-//           layout
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           transition={{ type: "spring", duration: 0.4, bounce: 0 }}
-//           layoutId="navHover"
-//           className="absolute inset-0 size-full rounded-lg bg-black/15 dark:bg-white/15"
-//         />
-//       ) : null}
-//     </AnimatePresence>
-//   </Link>
-// ))}
