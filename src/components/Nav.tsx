@@ -11,6 +11,7 @@ export default function Nav() {
     { label: "Calendar Widget", href: "/calendar-widget" },
     { label: "Elastic Card", href: "/elastic-card" },
     { label: "Action Toolbar", href: "/action-toolbar" },
+    { label: "Morph Effect", href: "/morph" },
   ];
   const [showMenu, setShowMenu] = useState(false);
   return (
