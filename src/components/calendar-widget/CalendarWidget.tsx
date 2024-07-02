@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Badge } from "../ui/badge";
-import { CameraIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import { VideoIcon } from "lucide-react";
 
 /**
  * React component that animates a card to show additional content when clicked.
@@ -35,7 +35,7 @@ export default function CalendarWidget() {
         // Toggle the expanded state when clicked
         onClick={() => setExpanded((expanded) => !expanded)}
         layout
-        className="flex w-fit flex-col justify-center overflow-hidden rounded-lg border"
+        className="flex w-fit flex-col justify-center overflow-hidden rounded-lg border bg-zinc-100 dark:bg-zinc-900"
       >
         <motion.div
           layout="position"
@@ -59,7 +59,7 @@ export default function CalendarWidget() {
               // Toggle the visibility of the camera icon based on the expanded state
               animate={expanded ? "visible" : "hidden"}
             >
-              <CameraIcon className="size-6" />
+              <VideoIcon className="size-6" />
             </motion.div>
           </div>
 
@@ -81,8 +81,8 @@ export default function CalendarWidget() {
                 <div className="flex -space-x-2 px-4">
                   {[...Array(3)].map((_, i) => (
                     <Avatar key={i} className={cn("", `z-[${i + 1}]`)}>
-                      <AvatarFallback className="rounded-full border-2 border-black shadow-xl dark:border-white">
-                        CN
+                      <AvatarFallback className="rounded-full border-2 border-zinc-500 shadow-xl">
+                        RJ
                       </AvatarFallback>
                     </Avatar>
                   ))}

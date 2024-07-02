@@ -4,101 +4,131 @@ import Link from "next/link";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useState } from "react";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import useMeasure from "react-use-measure";
 
-export default function Nav() {
+export default function Navigation() {
   const links = [
     { label: "Home", href: "/" },
-    { label: "Calendar Widget", href: "/calendar-widget" },
-    { label: "Elastic Card", href: "/elastic-card" },
-    { label: "Action Toolbar", href: "/action-toolbar" },
-    { label: "Morph Effect", href: "/morph" },
+    { label: "Components", openNav: true },
+    { label: "Portfolio", href: "https://portfolio-xi-five-83.vercel.app" },
   ];
+
   const [showMenu, setShowMenu] = useState(false);
+  const [menuElementRef, menuBounds] = useMeasure();
+
+  const projectLinks = [
+    {
+      label: "Calendar Widget",
+      href: "/calendar-widget",
+      description:
+        "Calendar widget with clear timezone differences information.",
+    },
+    {
+      label: "Elastic Card",
+      href: "/elastic-card",
+      description:
+        "Enable actions inside the card to trigger a playful and informative interaction.",
+    },
+    {
+      label: "Action Toolbar",
+      href: "/action-toolbar",
+      description:
+        "Toolbar that changes state to notify and enable information and actions.",
+    },
+    {
+      label: "Morph Effect",
+      href: "/morph",
+      description: "Morph effect for the text",
+    },
+  ];
+
   return (
     <MotionConfig transition={{ type: "spring", bounce: 0, duration: 0.5 }}>
-      <nav className="sticky top-0 z-50 w-full backdrop-blur">
-        <div className="flex items-center justify-between gap-4 border-b p-2 md:p-4">
-          <h1 className="text-xl">Animation Library</h1>
+      <motion.nav
+        animate={{ height: menuBounds.height }}
+        style={{ borderRadius: 18 }}
+        onMouseLeave={() => setShowMenu(false)}
+        className="fixed inset-x-0 top-4 z-50 mx-auto w-4/5 border border-zinc-300 bg-zinc-200 backdrop-blur dark:border-border dark:bg-zinc-900 lg:max-w-lg"
+      >
+        <section ref={menuElementRef}>
+          <div className="flex items-center justify-between gap-4 p-4 lg:justify-evenly">
+            <h1 className="text-xl">Animation Library</h1>
 
-          <button
-            onClick={() => setShowMenu((prev) => !prev)}
-            aria-expanded={showMenu}
-          >
-            <AnimatePresence initial={false} mode="popLayout">
-              {!showMenu ? (
-                <motion.div
-                  initial={{ rotate: 90, scale: 0 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  exit={{ rotate: 90, scale: 0 }}
-                >
-                  <HamburgerMenuIcon className="size-6" />
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-            <AnimatePresence mode="popLayout">
-              {showMenu ? (
-                <motion.div
-                  initial={{ rotate: -90, scale: 0 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  exit={{ rotate: -90, scale: 0 }}
-                >
-                  <Cross1Icon className="size-6" />
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </button>
-        </div>
-
-        {/* menu */}
-        <nav className="relative">
-          <motion.div
-            animate={{ height: showMenu ? "50vh" : 0 }}
-            className="absolute top-0 z-50 w-full overflow-hidden bg-zinc-100 text-end dark:bg-zinc-900"
-          >
-            <AnimatePresence mode="popLayout">
-              {showMenu && (
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, filter: "blur(10px)" },
-                    visible: {
-                      opacity: 1,
-                      filter: "blur(0px)",
-                      transition: {
-                        staggerChildren: 0.15,
-                        delayChildren: 0.15,
-                      },
-                    },
-                    exit: {
-                      opacity: 0,
-                      filter: "blur(10px)",
-                    },
-                  }}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="h-full space-y-2 border-b p-2"
-                >
-                  {links.map((link, i) => (
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1 },
-                        exit: { opacity: 0 },
-                      }}
-                      key={i}
-                      className="block text-2xl font-medium md:text-4xl"
+            <div className="hidden space-x-4 lg:block">
+              {links.map((link) => (
+                <>
+                  {link.href ? (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onMouseEnter={() => setShowMenu(false)}
+                      className="text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
                     >
-                      <Link onClick={() => setShowMenu(false)} href={link.href}>
-                        {link.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </nav>
-      </nav>
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <span
+                      key={link.href}
+                      onMouseEnter={() => setShowMenu(true)}
+                      className="cursor-pointer text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
+                    >
+                      {link.label}
+                    </span>
+                  )}
+                </>
+              ))}
+            </div>
+
+            <button
+              className="block lg:hidden"
+              onClick={() => setShowMenu((prev) => !prev)}
+              aria-expanded={showMenu}
+            >
+              <AnimatePresence initial={false} mode="popLayout">
+                {!showMenu ? (
+                  <motion.div
+                    initial={{ rotate: 90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: 90, scale: 0 }}
+                  >
+                    <HamburgerMenuIcon className="size-6" />
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+              <AnimatePresence mode="popLayout">
+                {showMenu ? (
+                  <motion.div
+                    initial={{ rotate: -90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: -90, scale: 0 }}
+                  >
+                    <Cross1Icon className="size-6" />
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+            </button>
+          </div>
+
+          {showMenu && (
+            <ul className="m-0 grid list-none grid-cols-1 gap-2 p-2 lg:grid-cols-2">
+              {projectLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setShowMenu(false)}
+                    className="flex h-full flex-col justify-center rounded-lg p-2 text-base hover:bg-zinc-300 dark:hover:bg-zinc-800"
+                  >
+                    <span>{link.label}</span>
+                    <span className="hidden text-sm text-muted-foreground md:inline">
+                      {link.description}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </motion.nav>
     </MotionConfig>
   );
 }
