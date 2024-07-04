@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import useMeasure from "react-use-measure";
 
@@ -56,11 +56,10 @@ export default function Navigation() {
               <h1 className="text-xl">Animation Library</h1>
 
               <div className="hidden space-x-4 lg:block">
-                {links.map((link) => (
-                  <>
+                {links.map((link, i) => (
+                  <Fragment key={i}>
                     {link.href ? (
                       <Link
-                        key={link.href}
                         href={link.href}
                         onMouseEnter={() => setShowMenu(false)}
                         className="text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
@@ -69,14 +68,13 @@ export default function Navigation() {
                       </Link>
                     ) : (
                       <span
-                        key={link.href}
                         onMouseEnter={() => setShowMenu(true)}
                         className="cursor-pointer text-muted-foreground transition-colors duration-300 ease-in-out hover:text-foreground"
                       >
                         {link.label}
                       </span>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </div>
 
@@ -119,21 +117,21 @@ export default function Navigation() {
                   transition={{
                     staggerChildren: 0.1,
                   }}
-                  className="m-0 grid list-none grid-cols-1 gap-2 p-2 lg:grid-cols-2"
+                  className="m-0 grid list-none grid-cols-1 p-2 lg:grid-cols-2"
                 >
-                  {projectLinks.map((link) => (
+                  {projectLinks.map((link, i) => (
                     <motion.li
                       variants={{
                         visible: { opacity: 1 },
                         hidden: { opacity: 0 },
                       }}
                       transition={{ duration: 1, type: "spring" }}
-                      key={link.href}
+                      key={i}
                     >
                       <Link
                         href={link.href}
                         onClick={() => setShowMenu(false)}
-                        className="flex h-full flex-col justify-center rounded-lg p-2 text-base hover:bg-zinc-300 dark:hover:bg-zinc-800"
+                        className="flex h-full flex-col justify-center rounded-lg p-2 text-base transition-all duration-300 ease-in-out hover:scale-95 hover:bg-zinc-300 dark:hover:bg-zinc-800"
                       >
                         <span>{link.label}</span>
                         <span className="hidden text-sm text-muted-foreground md:inline">
