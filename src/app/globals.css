@@ -68,7 +68,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border will-change-transform;
   }
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
@@ -85,19 +85,19 @@
   p {
     @apply leading-7;
   }
-  ul {
-    @apply my-6 ml-6 list-disc [&>li]:mt-2;
-  }
   .lead {
-    @apply text-muted-foreground text-xl;
+    @apply text-xl text-muted-foreground;
   }
   .muted {
-    @apply text-muted-foreground text-sm;
+    @apply text-sm text-muted-foreground;
   }
   html {
     -webkit-tap-highlight-color: transparent !important;
   }
   body {
-    @apply bg-background text-foreground relative;
+    @apply relative min-h-dvh overflow-clip bg-background text-foreground;
+  }
+  main {
+    @apply bg-zinc-200 text-inherit dark:bg-zinc-900;
   }
 }
