@@ -16,7 +16,10 @@ export default function Navigation() {
     { label: "Portfolio", href: "https://portfolio-xi-five-83.vercel.app" },
   ];
 
-  const componentLinks = [{ label: "clip path tab", link: "/tab" }];
+  const componentLinks = [
+    { label: "Clip Path Tab", link: "/tab" },
+    { label: "Family Drawer", link: "/familyDrawer" },
+  ];
 
   const [showSideDrawer, setShowSideDrawer] = useState(false);
   return (
@@ -55,7 +58,7 @@ export default function Navigation() {
         </ul>
       </SideDrawer>
 
-      <nav className="fixed inset-x-0 top-4 z-50 mx-auto w-4/5 overflow-y-hidden rounded-lg border bg-background backdrop-blur lg:max-w-lg">
+      <nav className="fixed inset-x-0 top-2 z-50 mx-auto w-4/5 overflow-y-hidden rounded-lg border bg-background backdrop-blur lg:max-w-lg">
         <div className="flex items-center justify-between gap-4 p-4 lg:justify-evenly">
           <h1 className="text-xl">Animation Library</h1>
 
@@ -144,13 +147,13 @@ const DropDown = ({
         </div>
 
         {dropDown && (
-          <div className="border-l-2 pl-4">
+          <div className="mt-2 space-y-2 border-l-2 pl-4">
             {componentLinks.map((link, i) => (
               <Link
                 key={i}
                 href={link.link}
                 onClick={() => setShowSideDrawer(false)}
-                className="text-base font-normal text-muted-foreground"
+                className="block text-base font-normal text-muted-foreground"
               >
                 {link.label}
               </Link>

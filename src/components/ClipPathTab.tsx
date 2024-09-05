@@ -63,7 +63,7 @@ export default function ClipPathTab() {
         onMouseLeave={() =>
           setHoverPosition((prev) => prev && { ...prev, opacity: 0 })
         }
-        className="relative z-10 flex gap-4 rounded-lg bg-zinc-200 p-2 dark:bg-zinc-900"
+        className="relative z-10 flex gap-2 rounded-lg bg-zinc-200 p-2 dark:bg-zinc-900"
       >
         {links.map((link, i) => (
           <li
@@ -100,8 +100,8 @@ const ClipNav = ({
           ? `inset(${position.top}px calc(100% - ${position.left + position.width}px) ${position.top}px ${position.left}px round 8px)`
           : "inset(100%)",
       }}
-      transition={{ type: "spring", bounce: 0, duration: 0.5 }}
-      className="absolute inset-0 z-30 flex size-full gap-4 rounded-lg bg-zinc-900 p-2 text-white dark:bg-zinc-200 dark:text-black"
+      transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+      className="absolute inset-0 z-30 flex size-full gap-2 rounded-lg bg-zinc-900 p-2 text-white dark:bg-zinc-200 dark:text-black"
     >
       {links.map((link, i) => (
         <li key={i} className="p-2">
@@ -126,8 +126,8 @@ const Cursor = ({
     <motion.div
       initial={{ opacity: 0 }}
       animate={hoverPosition}
-      transition={{ duration: 0.5, type: "spring", bounce: 0 }}
-      className="absolute inset-0 z-0 rounded-lg bg-white dark:bg-black"
+      transition={{ duration: 0.35, type: "spring", bounce: 0 }}
+      className="absolute inset-0 z-0 h-0 w-0 rounded-lg bg-white dark:bg-black"
     />
   );
 };
