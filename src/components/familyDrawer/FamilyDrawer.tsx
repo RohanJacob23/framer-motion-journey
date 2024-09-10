@@ -1,11 +1,11 @@
 "use client";
 
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import useMeasure from "react-use-measure";
-import { DefaultView, Key, Phrase, RemoveWallet } from "./Views";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { DefaultView, Key, Phrase, RemoveWallet } from "./Views";
 
 export default function FamilyDrawer() {
   const [show, setShow] = useState(false);
@@ -52,7 +52,7 @@ export default function FamilyDrawer() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleClose}
-              className="absolute inset-0 z-10 size-full bg-black/80"
+              className="absolute inset-0 z-50 size-full bg-black/80"
             />
 
             {/* drawer */}
@@ -70,7 +70,7 @@ export default function FamilyDrawer() {
                 ease: [0.25, 1, 0.5, 1],
                 duration: 0.27,
               }}
-              className="absolute bottom-0 z-20 pb-4"
+              className="absolute bottom-0 z-50 pb-4"
             >
               <motion.div
                 animate={{ height }}

@@ -9,7 +9,7 @@ export default function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
   return (
     <Button
-      className="absolute bottom-8 right-8 rounded-lg"
+      className="fixed bottom-4 right-4 z-10 rounded-lg"
       variant="outline"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       size="icon"

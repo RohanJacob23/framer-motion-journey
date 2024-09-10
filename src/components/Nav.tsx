@@ -19,6 +19,7 @@ export default function Navigation() {
   const componentLinks = [
     { label: "Clip Path Tab", link: "/tab" },
     { label: "Family Drawer", link: "/familyDrawer" },
+    { label: "Create New Disclosure", link: "/createNew-disclosure" },
   ];
 
   const [showSideDrawer, setShowSideDrawer] = useState(false);

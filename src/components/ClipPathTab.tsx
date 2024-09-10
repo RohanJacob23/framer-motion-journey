@@ -44,7 +44,6 @@ export default function ClipPathTab() {
     });
   };
   const handleMouseOver = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    console.log(hoverPosition);
     const list = e.currentTarget;
     setHoverPosition({
       top: list.offsetTop,

@@ -2,7 +2,7 @@ import ClipPathTab from "@/components/ClipPathTab";
 
 export default function page() {
   return (
-    <main className="flex flex-col items-center justify-center gap-4 p-4 md:p-8 md:pt-24">
+    <main className="flex flex-col items-center justify-center gap-4 p-4 pt-20 md:p-8 md:pt-24">
       <div className="space-y-2">
         <h1>ClipPath Tab</h1>
         <p className="text-muted-foreground">
