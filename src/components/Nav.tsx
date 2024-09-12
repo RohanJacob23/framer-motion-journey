@@ -20,6 +20,7 @@ export default function Navigation() {
     { label: "Clip Path Tab", link: "/tab" },
     { label: "Family Drawer", link: "/familyDrawer" },
     { label: "Create New Disclosure", link: "/createNew-disclosure" },
+    { label: "Pricing Widget", link: "/pricing-widget" },
   ];
 
   const [showSideDrawer, setShowSideDrawer] = useState(false);

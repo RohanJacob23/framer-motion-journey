@@ -8,6 +8,7 @@ export default function page() {
         <h1>Create New Disclosure Card</h1>
         <p className="text-muted-foreground">
           Animated disclosure card using Framer Motion which expands on click
+          inspired by <b>Nitish Khagwal</b>
         </p>
       </div>
       <section className="grid size-full max-h-[28rem] max-w-screen-md place-items-center rounded-lg border-2 bg-background p-4">
