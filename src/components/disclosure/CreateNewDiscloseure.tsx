@@ -12,7 +12,6 @@ import {
   Trophy,
   X,
 } from "@phosphor-icons/react";
-import { cn } from "@/lib/utils";
 
 export default function CreateNewDiscloseure() {
   const [expand, setExpand] = useState(false);
@@ -37,7 +36,7 @@ export default function CreateNewDiscloseure() {
   }, []);
 
   return (
-    <MotionConfig transition={{ type: "spring", bounce: 0.25, duration: 0.7 }}>
+    <MotionConfig transition={{ type: "spring", bounce: 0.3, duration: 0.75 }}>
       <div className="relative">
         <motion.button
           layoutId="wrapper"
@@ -85,18 +84,9 @@ export default function CreateNewDiscloseure() {
                 </div>
 
                 <motion.div
-                  initial={{ opacity: 0, filter: "blur(8px)" }}
-                  animate={{
-                    opacity: 1,
-                    filter: "blur(0px)",
-                    origin: "bottom right",
-                  }}
-                  exit={{
-                    opacity: 1,
-                    filter: "blur(8px)",
-                    // origin: "top left",
-                  }}
-                  layout
+                  initial={{ opacity: 0, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 1, filter: "blur(10px)" }}
                   className="grid grid-cols-2 gap-2 rounded bg-accent p-2 md:grid-cols-3"
                 >
                   {closureButton.map((button, i) => (
