@@ -36,7 +36,8 @@ export default function CreateNewDiscloseure() {
   }, []);
 
   return (
-    <MotionConfig transition={{ type: "spring", bounce: 0.3, duration: 0.75 }}>
+    // <MotionConfig transition={{ duration: 0.75 }}>
+    <MotionConfig transition={{ ease: "anticipate", duration: 0.75 }}>
       <div className="relative">
         <motion.button
           layoutId="wrapper"
@@ -84,9 +85,13 @@ export default function CreateNewDiscloseure() {
                 </div>
 
                 <motion.div
-                  initial={{ opacity: 0, filter: "blur(10px)" }}
-                  animate={{ opacity: 1, filter: "blur(0px)" }}
-                  exit={{ opacity: 1, filter: "blur(10px)" }}
+                  initial={{ opacity: 0, scale: 0.75, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{
+                    opacity: 0,
+                    filter: "blur(10px)",
+                    transition: { ease: "anticipate", duration: 0.2 },
+                  }}
                   className="grid grid-cols-2 gap-2 rounded bg-accent p-2 md:grid-cols-3"
                 >
                   {closureButton.map((button, i) => (

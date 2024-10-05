@@ -100,4 +100,10 @@
   main {
     @apply bg-zinc-200 text-inherit dark:bg-zinc-900;
   }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

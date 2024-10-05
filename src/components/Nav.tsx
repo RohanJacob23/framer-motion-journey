@@ -21,6 +21,7 @@ export default function Navigation() {
     { label: "Family Drawer", link: "/familyDrawer" },
     { label: "Create New Disclosure", link: "/createNew-disclosure" },
     { label: "Pricing Widget", link: "/pricing-widget" },
+    { label: "Send Money", link: "/send-money" },
   ];
 
   const [showSideDrawer, setShowSideDrawer] = useState(false);
