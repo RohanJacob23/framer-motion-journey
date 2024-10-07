@@ -22,6 +22,7 @@ export default function Navigation() {
     { label: "Create New Disclosure", link: "/createNew-disclosure" },
     { label: "Pricing Widget", link: "/pricing-widget" },
     { label: "Send Money", link: "/send-money" },
+    { label: "Navigation Menu", link: "/navigation" },
   ];
 
   const [showSideDrawer, setShowSideDrawer] = useState(false);
